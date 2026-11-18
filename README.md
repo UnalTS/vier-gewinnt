@@ -1,34 +1,7 @@
 # Vier gewinnt
 
-Zwei Personen, ein Rechner, sieben Spalten. Rot beginnt. Wer zuerst vier eigene Steine in eine Reihe bringt, gewinnt. Waagerecht, senkrecht und diagonal zählen.
+Ihr spielt zu zweit am selben Rechner. Rot beginnt, danach lasst ihr abwechselnd einen Stein in eine Spalte fallen. Wer zuerst vier eigene Steine waagerecht, senkrecht oder diagonal in eine Reihe bringt, gewinnt.
 
-![Spielfeld mit vier diagonal verbundenen roten Steinen](docs/spiel.png)
+Zum Spielen unter Windows brauchst du ein JDK ab Version 17. Lade das Projekt herunter, entpacke es und öffne `start.cmd` per Doppelklick. Klicke auf eine Spalte oder wähle sie mit den Pfeiltasten und drücke Enter.
 
-## Spielen
-
-Du brauchst ein **JDK ab Version 17**. Lade das Projekt herunter und entpacke es. Unter Windows startet ein Doppelklick auf **start.cmd** das Spiel.
-
-Auf macOS oder Linux im Projektordner:
-
-```sh
-mkdir -p out
-javac --release 17 -encoding UTF-8 -d out src/*.java
-java -cp out VierGewinnt
-```
-
-Klicke auf eine Spalte, um einen Stein fallen zu lassen. Mit den Pfeiltasten kannst du die Spalte wechseln und mit Enter setzen. Ist eine Spalte voll, bleibst du am Zug. **Neue Runde** leert das Brett und Rot beginnt wieder.
-
-## Wie erkennt das Spiel einen Sieg?
-
-Nach jedem Zug prüft [Game.java](src/Game.java) die Linien durch den gerade gesetzten Stein. Dafür zählt das Spiel die gleichfarbigen Nachbarn in beide Richtungen. Liegt der neue Stein etwa zwischen zwei links und einem rechts, sind es zusammen vier. Die Oberfläche in [VierGewinnt.java](src/VierGewinnt.java) zeichnet das Brett mit Swing, animiert den Zug und hebt die Gewinnreihe hervor.
-
-## Regeln testen
-
-Diese Befehle im Projektordner ausführen:
-
-```sh
-javac --release 17 -encoding UTF-8 -d out src/Game.java tests/GameTest.java
-java -cp out GameTest
-```
-
-Die Tests spielen konkrete Zugfolgen durch, darunter beide Diagonalen, eine volle Spalte und ein Unentschieden nach 42 Zügen.
+Die Spielregeln stehen in [Game.java](./src/Game.java), die Oberfläche in [VierGewinnt.java](./src/VierGewinnt.java).
