@@ -1,8 +1,8 @@
 # Vier gewinnt
 
-Zwei Personen, ein Rechner, sieben Spalten. Koralle beginnt. Wer zuerst vier eigene Steine in eine Reihe bringt, gewinnt. Waagerecht, senkrecht und diagonal zählen.
+Zwei Personen, ein Rechner, sieben Spalten. Rot beginnt. Wer zuerst vier eigene Steine in eine Reihe bringt, gewinnt. Waagerecht, senkrecht und diagonal zählen.
 
-![Spielfeld mit vier diagonal verbundenen korallfarbenen Steinen](docs/spiel.png)
+![Spielfeld mit vier diagonal verbundenen roten Steinen](docs/spiel.png)
 
 ## Spielen
 
@@ -16,7 +16,7 @@ javac --release 17 -encoding UTF-8 -d out src/*.java
 java -cp out VierGewinnt
 ```
 
-Klicke auf eine Spalte, um einen Stein fallen zu lassen. Mit den Pfeiltasten kannst du die Spalte wechseln und mit Enter setzen. Ist eine Spalte voll, bleibst du am Zug. **Neue Runde** leert das Brett und Koralle beginnt wieder.
+Klicke auf eine Spalte, um einen Stein fallen zu lassen. Mit den Pfeiltasten kannst du die Spalte wechseln und mit Enter setzen. Ist eine Spalte voll, bleibst du am Zug. **Neue Runde** leert das Brett und Rot beginnt wieder.
 
 ## Wie erkennt das Spiel einen Sieg?
 

@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 public final class VierGewinnt extends JPanel {
     static final Color NIGHT = new Color(19, 29, 48), PANEL = new Color(38, 54, 80);
     static final Color LIGHT = new Color(244, 246, 250), MUTED = new Color(174, 191, 216);
-    static final Color CORAL = new Color(255, 132, 123), GOLD = new Color(255, 203, 99);
+    static final Color RED = new Color(247, 63, 69), YELLOW = new Color(255, 225, 48);
     private Game game = new Game();
     private final JLabel status = new JLabel();
     private final Board board = new Board();
@@ -42,7 +42,16 @@ public final class VierGewinnt extends JPanel {
         header.add(status, BorderLayout.SOUTH);
         add(header, BorderLayout.NORTH);
         add(board, BorderLayout.CENTER);
-        add(label("← →   Spalte wählen     ·     Enter   Stein setzen", 13, MUTED), BorderLayout.SOUTH);
+        JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 3));
+        controls.setOpaque(false);
+        controls.add(keycap("←"));
+        controls.add(keycap("→"));
+        JLabel chooseHint = label("Spalte wählen", 13, LIGHT);
+        chooseHint.setBorder(new EmptyBorder(0, 2, 0, 14));
+        controls.add(chooseHint);
+        controls.add(keycap("↵ Enter"));
+        controls.add(label("Stein setzen", 13, LIGHT));
+        add(controls, BorderLayout.SOUTH);
         updateStatus();
     }
 
@@ -53,8 +62,18 @@ public final class VierGewinnt extends JPanel {
         return label;
     }
 
-    private static Color color(int player) { return player == 1 ? CORAL : GOLD; }
-    private static String name(int player) { return player == 1 ? "Koralle" : "Gold"; }
+    private static JLabel keycap(String text) {
+        JLabel key = label(text, 14, LIGHT);
+        key.setFont(key.getFont().deriveFont(Font.BOLD));
+        key.setOpaque(true);
+        key.setBackground(PANEL);
+        key.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createMatteBorder(1, 1, 3, 1, MUTED), new EmptyBorder(3, 8, 3, 8)));
+        return key;
+    }
+
+    private static Color color(int player) { return player == 1 ? RED : YELLOW; }
+    private static String name(int player) { return player == 1 ? "Rot" : "Gelb"; }
 
     private void updateStatus() {
         String text = name(game.player()) + " ist am Zug";
